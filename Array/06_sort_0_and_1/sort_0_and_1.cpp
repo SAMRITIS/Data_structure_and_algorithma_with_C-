@@ -1,27 +1,32 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    int arr[6] = {0,1,1,1,0,0,};
-    int i = 0, j = 6;
-    while(i<6 && j>0)
+    int arr[6] = {0, 1, 1, 1, 0, 0};
+    int left = 0;
+    int right = 6 - 1;
+    while (left < right)
     {
-        if(arr[i] == 1 && arr[j] == 0)
+        while (arr[left] == 0 && left < right)
         {
-            swap(arr[i], arr[j]);
+
+            left++;
         }
-        else if(arr[i] == 0)
+        while (arr[right] == 1 && left < right)
         {
-            i++;
+
+            right--;
         }
-        else if(arr[j] == 1)
+        if (left < right)
         {
-            j--;
+            swap(arr[left], arr[right]);
+            left++;
+            right--;
         }
-    }
-    for(int k=0;k<6;k++)
+    };
+    for (int k = 0; k < 6; k++)
     {
-        cout<<arr[k]<<" ";
+        cout << arr[k] << " ";
     }
 }
